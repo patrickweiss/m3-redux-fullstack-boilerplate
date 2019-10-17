@@ -38,17 +38,12 @@ authController.post("/signup", (req, res) => {
   });
 });
 
-authController.get("/login", (req, res) => res.render("auth/login"));
 
 authController.post("/login", (req, res) => {
   const username = req.body.username;
   const userPassword = req.body.password;
 
-  if (username === "" || userPassword === "") {
-    res.render("auth/login", { errorMessage: "Provide both, username and password to login." });
-    return;
-  }
-
+  
   User.findOne({ username }, "_id username password", (err, user) => {
     if (err || !user) {
       res.render("auth/login", { errorMessage: "The username doesn't exist." });

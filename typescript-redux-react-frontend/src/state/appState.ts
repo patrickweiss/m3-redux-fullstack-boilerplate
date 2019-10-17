@@ -1,3 +1,9 @@
+export interface IUser {
+    userid:string;
+    firstname:string;
+    lastname:string;
+}
+
 export interface IUI{
     counter: number;
     loggedIn: boolean;
@@ -11,6 +17,7 @@ export interface IAssetData {
   }
 
 export interface IBM{
+    user?:IUser;
     assets:IAssetData[]
 }
 

@@ -50,7 +50,6 @@ export default class ShowAssets extends Component<IProps, IJSXState> {
           type: ActionType.server_called
         }
         window.CS.clientAction(uiAction);
-
         const newAsset: IAssetData = {
           _id: mongoose.Types.ObjectId().toString(),
           asset_name: "",

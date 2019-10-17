@@ -1,7 +1,8 @@
 export enum ActionType {
     INIT = "@@INIT",
     update_user = "update_user",
-    create_user = "create_user",
+    user_created = "user_created",
+    user_exists = "user_exists",
     create_asset = "create_asset",
     update_asset = "update_asset",
     delete_asset = "delete_asset",

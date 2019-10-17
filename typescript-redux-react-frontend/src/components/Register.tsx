@@ -12,17 +12,21 @@ export interface IUserAction extends IAction {
     user: IUser
 }
 
-
-reducerFunctions[ActionType.create_user] = function (newState: IState, updateAction: IUserAction) {
+reducerFunctions[ActionType.update_user] = function (newState: IState, updateAction: IUserAction) {
     console.log(updateAction.user);
-    return newState.BM.user = updateAction.user;
+    newState.BM.user = updateAction.user;
+    return newState
 }
-
+reducerFunctions[ActionType.user_created] = function (newState: IState, updateAction: IUserAction) {
+    console.log(updateAction.user);
+    newState.UI.waitingForResponse = false;
+    newState.UI.loggedIn = true ;
+    return newState
+}
 export default class Register extends Component {
 
     constructor(props: IProps) {
         super(props);
-
     }
     render() {
         return (
@@ -40,7 +44,7 @@ export default class Register extends Component {
                     <label htmlFor="password">Password:</label>
                     <input type="password" placeholder="********" onChange={this.handlePasswordChange} value={window.CS.getBMState().user.password} />
                     <br />
-                    <button></button>
+                    <input type="submit" value="Register as new User" />
                 </form>
             </div>
         )
@@ -82,8 +86,20 @@ export default class Register extends Component {
         }
         window.CS.clientAction(action);
     }
-    handleSubmit(event:any) {
+    handleSubmit(event: any) {
         event.preventDefault();
-        
-      }
+        const uiAction: IAction = {
+            type: ActionType.server_called
+        }
+        window.CS.clientAction(uiAction);
+        axios.post(window.CS.getDBServerURL() + '/signup', window.CS.getBMState().user)
+            .then(res => {
+                const uiAction: IAction = {
+                    type: ActionType.user_created
+                }
+                window.CS.clientAction(uiAction);
+
+                console.log(res.data)
+            });
+    }
 }

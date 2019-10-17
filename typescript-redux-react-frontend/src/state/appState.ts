@@ -1,7 +1,8 @@
 export interface IUser {
-    userid:string;
     firstname:string;
     lastname:string;
+    username:string;
+    password:string;
 }
 
 export interface IUI{
@@ -17,7 +18,7 @@ export interface IAssetData {
   }
 
 export interface IBM{
-    user?:IUser;
+    user:IUser;
     assets:IAssetData[]
 }
 
@@ -33,8 +34,14 @@ export const initial:IState = {
 		counter: 0,
 		loggedIn: false,
 		waitingForResponse: false,
-	},
+    },
 	BM: {
+        user:{
+            firstname:"",
+            lastname:"",
+            username:"",
+            password:""
+        },
         assets:[]
 	}
 };

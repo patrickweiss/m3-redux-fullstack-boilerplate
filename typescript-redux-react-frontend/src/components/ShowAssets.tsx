@@ -60,7 +60,7 @@ export default class ShowAssets extends Component<IProps, IJSXState> {
           type: ActionType.create_asset,
           asset: newAsset
         }
-        axios.post('http://localhost:8080/assets/add', newAsset)
+        axios.post(window.CS.getDBServerURL()+'/assets/add', newAsset)
         .then(res => {
           window.CS.clientAction(action);
           console.log(res.data)

@@ -1,10 +1,10 @@
 const authController = require("express").Router();
 
 // User model
-const User           = require("../models/User");
+const User           = require("../models/user");
 
 // BCrypt to encrypt passwords
-const bcrypt         = require("bcrypt");
+const bcrypt         = require("bcryptjs");
 const bcryptSalt     = 10;
 
 authController.get("/signup", (req, res) => {

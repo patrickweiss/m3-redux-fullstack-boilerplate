@@ -54,13 +54,11 @@ export default class SimpleAsset extends React.PureComponent<IProps, IJSXState> 
         this.state = {
             edit_mode: props.edit,
         }
-
     }
 
     render() {
 
         //if the component is in edit mode, it will render different than if it just shows the data
-
         if (this.state.edit_mode)
             return (
                 <tr>
@@ -88,7 +86,6 @@ export default class SimpleAsset extends React.PureComponent<IProps, IJSXState> 
     handleSwitchToEditMode() {
         this.setState({ edit_mode: true });
     }
-
     handleNameChange(event: any) {
         const newAsset = this.props.asset;
         newAsset.asset_name = event.target.value
@@ -107,8 +104,6 @@ export default class SimpleAsset extends React.PureComponent<IProps, IJSXState> 
         }
         window.CS.clientAction(action);
     }
-
-
     handleSave(event: any) {
         this.setState({ edit_mode: false });
         const uiAction: IAction = {

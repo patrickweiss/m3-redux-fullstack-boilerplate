@@ -5,7 +5,8 @@ import axios from 'axios';
 import { IWindow } from '../framework/IWindow';
 import { reducerFunctions } from '../reducer/appReducer';
 import { IUserAction } from './Register';
-import { userInfo } from 'os';
+import history from '../framework/history';
+
 declare let window: IWindow;
 
 
@@ -99,6 +100,7 @@ export default class Login extends Component {
                         user: data as IUser
                     }
                     window.CS.clientAction(loggedinAction);
+                    history.push("/showassets");
                 }
             });
     }

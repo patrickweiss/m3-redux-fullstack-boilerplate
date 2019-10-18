@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { ActionType, IAction } from '../framework/IAction';
 import { IState, IUser } from '../state/appState'
 import axios from 'axios';
+import history from '../framework/history';
+
 import { IWindow } from '../framework/IWindow';
 import { reducerFunctions } from '../reducer/appReducer';
 declare let window: IWindow;
@@ -97,8 +99,8 @@ export default class Register extends Component {
                 const uiAction: IAction = {
                     type: ActionType.user_created
                 }
+                history.push('/');
                 window.CS.clientAction(uiAction);
-
                 console.log(res.data)
             });
     }

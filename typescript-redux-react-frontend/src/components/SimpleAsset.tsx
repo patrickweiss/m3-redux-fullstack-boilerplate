@@ -23,7 +23,7 @@ interface IJSXState {
 }
 
 reducerFunctions[ActionType.asset_updated] = function (newState: IState, updateAction: IAssetAction) {
-    newState.UI.waitingForResponse=false;
+    newState.UI.waitingForResponse = false;
 }
 reducerFunctions[ActionType.update_asset] = function (newState: IState, updateAction: IAssetAction) {
     let assetToChange: IAssetData[] = newState.BM.assets.filter(asset => asset._id === updateAction.asset._id)
@@ -108,29 +108,29 @@ export default class SimpleAsset extends React.PureComponent<IProps, IJSXState> 
         this.setState({ edit_mode: false });
         const uiAction: IAction = {
             type: ActionType.server_called
-          }
-          window.CS.clientAction(uiAction);
-        axios.post(window.CS.getDBServerURL()+'/assets/update/' + this.props.asset._id, this.props.asset)
-        .then(res => {
-            const uiAction: IAction = {
-                type: ActionType.asset_updated
-              }
-              window.CS.clientAction(uiAction);
-        });
+        }
+        window.CS.clientAction(uiAction);
+        axios.post(window.CS.getDBServerURL() + '/assets/update/' + this.props.asset._id, this.props.asset)
+            .then(res => {
+                const uiAction: IAction = {
+                    type: ActionType.asset_updated
+                }
+                window.CS.clientAction(uiAction);
+            });
     }
     handleDelete() {
         const uiAction: IAction = {
             type: ActionType.server_called
-          }
-          window.CS.clientAction(uiAction);
-          axios.get(window.CS.getDBServerURL()+'/assets/delete/' + this.props.asset._id)
-          .then(res => {
-            const action: IAssetAction = {
-                type: ActionType.delete_asset,
-                asset: this.props.asset
-            }
-            window.CS.clientAction(action)
-          });
+        }
+        window.CS.clientAction(uiAction);
+        axios.get(window.CS.getDBServerURL() + '/assets/delete/' + this.props.asset._id)
+            .then(res => {
+                const action: IAssetAction = {
+                    type: ActionType.delete_asset,
+                    asset: this.props.asset
+                }
+                window.CS.clientAction(action)
+            });
     }
     handleRerenderTest(event: any) {
         const action: IAction = {

@@ -42,8 +42,6 @@ authController.post("/signup", (req, res) => {
 authController.post("/login", (req, res) => {
   const username = req.body.username;
   const userPassword = req.body.password;
-
-  
   User.findOne({ username }, "_id username password firstname lastname", (err, user) => {
     if (err || !user) {
       res.status(200).json({ errorMessage: "The username doesn't exist." });
@@ -63,7 +61,6 @@ authController.get("/logout", (req, res, next) => {
     res.status(200).json({ errorMessage: "logged out" }); 
     return; 
   }
-
   req.session.destroy( err => {
     if (err) { 
       console.log(err); 

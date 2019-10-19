@@ -40,12 +40,13 @@ export class CS {
             reducer,
             reduxMiddleware
         );
+        
     }
    //changed this to any because of the thunk returning a function ...
    public clientAction(action:IAction | Function){
     this.store.dispatch(action);
     }
     public getDBServerURL(){
-        return "http://localhost:8080";
+        return "http://localhost:3000";
     }
 }

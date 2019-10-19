@@ -31,7 +31,7 @@ export default class App extends Component {
     //The axios library will be used to ask the express server to deliver the data of the assets that are already in the database 
     //by sending a get request to the express rest api
 
-    axios.get('http://localhost:8080/assets/read').then(response => {
+    axios.get(window.CS.getDBServerURL()+'/assets/read').then(response => {
 
       //this code will be executed as soon as the browser receives the response from the express server
       //in order to see how the response.data was created open the file /express-mongo-backend/server.js
@@ -136,7 +136,7 @@ export default class App extends Component {
 
     //we delete the asset identified by the id in the event in the mongodb database, by calling the "delete" api of our express server 
 
-    axios.get('http://localhost:8080/assets/delete/' + IdOfAssetToDelete)
+    axios.get(window.CS.getDBServerURL()+'/assets/delete/' + IdOfAssetToDelete)
       .then(res => console.log(res.data));
 
     //now we delete the asset in the UI and trigger an UI update by calling ".setState()"
@@ -154,7 +154,7 @@ export default class App extends Component {
   //the next method is just a helper to save a new asset in the database
 
   saveAssetToDatabase(asset) {
-    axios.post('http://localhost:8080/assets/add', asset)
+    axios.post(window.CS.getDBServerURL()+'/assets/add', asset)
       .then(res => console.log(res.data));
   }
 

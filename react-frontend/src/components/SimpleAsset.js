@@ -73,7 +73,7 @@ export default class SimpleAsset extends Component {
     handleSave(event) {
         const IdOfAssetToUpdate = event.target.id;
   
-        axios.post('http://localhost:8080/assets/update/' + IdOfAssetToUpdate, this.state.asset)
+        axios.post(window.CS.getDBServerURL()+'/assets/update/' + IdOfAssetToUpdate, this.state.asset)
             .then(res => console.log(res.data));
 
         this.setState({ edit_mode: false });

@@ -17,13 +17,13 @@ To run the application first you need to start the mongo db database:
 - sudo service mongod start
 
 To run the express webserver with the rest api to connect the browser client to the database start express:
-- open a new terminal and go into the directory /mern-asset-management/express-mongo-backend
+- open a new terminal and go into the directory /m3-redux-fullstack-boilerplate/express-mongo-backend
 - within this directory run:
 - npm install
 - nodemon server
 
 To run the webserver for the react client:
-- open a new terminal and go into the directory /mern-asset-management/react-frontend
+- open a new terminal and go into the directory /m3-redux-fullstack-boilerplate/typescript-redux-react-frontend
 - run: npm install
 - within this directroy run: npm start
 
